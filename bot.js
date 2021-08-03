@@ -16,6 +16,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
 	console.log('Bot ready!');
+	client.user.setActivity('/tcreate', { type: 'PLAYING' });
 });
 
 client.on('messageCreate', async message => {
@@ -25,12 +26,12 @@ client.on('messageCreate', async message => {
 		// console.log('Deploying slash commands');
 		// let server = client.guilds.cache.get('852703867572715560');
 		// console.log(server.commands);
-		client.guilds.cache.get('852703867572715560')?.commands.set([])
+		client.guilds.cache.get('477912521806839819')?.commands.set([])
 			.then(console.log)
 			.catch(console.log);
 		for (const file of commandFiles) {
 			const command = require(`./commands/${file}`);
-			const slashCmd = await client.guilds.cache.get('852703867572715560')?.commands.create(command.data);
+			const slashCmd = await client.guilds.cache.get('477912521806839819')?.commands.create(command.data);
 			console.log(slashCmd);
 		}
 	}

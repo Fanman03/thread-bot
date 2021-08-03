@@ -26,7 +26,7 @@ module.exports = {
 		// Add original message author to thread
 		const originalMessageId = interaction.options.getString('input');
 		const originalMessage = await interaction.channel.messages.fetch(originalMessageId);
-		await thread.members.add(originalMessage.author.id);
+		await thread.members.add('**Original Question:** ' + originalMessage.author.id);
 
 		// Resend original message
 		thread.send(originalMessage.content);
@@ -34,6 +34,9 @@ module.exports = {
 		// Add creator of thread to new thread
 		const threadCreator = interaction.user.id;
 		await thread.members.add(threadCreator);
+
+		// Add other help bot to thread
+		await thread.members.add('751229270667559003');
 
 		// Reply to interaction
 		interaction.reply('Created thread ' + threadname + ' sucessfully.');
