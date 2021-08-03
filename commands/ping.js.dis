@@ -1,0 +1,14 @@
+const name = 'ping';
+const description = 'Replies with bot latency';
+module.exports = {
+	name: name,
+	description: description,
+	data: {
+		name: name,
+		description: description,
+	},
+	async execute(interaction) {
+		console.log(interaction);
+		await interaction.reply('Pong!');
+	},
+};
