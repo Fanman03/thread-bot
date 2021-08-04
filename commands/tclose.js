@@ -13,8 +13,9 @@ module.exports = {
 			const messageEmbed = new MessageEmbed()
 				.setColor('#0099ff')
 				.setTitle('Thread closed.')
-				.setFooter('Thread Bot by Fanman03', 'https://images-ext-2.discordapp.net/external/qFUpVs1VHK1zvWBc6T_bDMqNKYsO2pEXDgSAq8bb-OM/https/cdn.discordapp.com/avatars/303014314208395265/f715f04af3a3d07ef9607aae597e10fb.webp'); interaction.channel.setArchived(true);
+				.setFooter('Thread Bot by Fanman03', 'https://images-ext-2.discordapp.net/external/qFUpVs1VHK1zvWBc6T_bDMqNKYsO2pEXDgSAq8bb-OM/https/cdn.discordapp.com/avatars/303014314208395265/f715f04af3a3d07ef9607aae597e10fb.webp');
 			await interaction.reply({ embeds: [messageEmbed] });
+			interaction.channel.setArchived(true);
 		}
 		else {
 			const messageEmbed = new MessageEmbed()
