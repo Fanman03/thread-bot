@@ -4,6 +4,7 @@
   "description": "A Discord bot for managing support tickets via Threads",
   "main": "bot.js",
   "dependencies": {
+    "discord-buttons": "^4.0.0",
     "discord.js": "^13.0.0-dev.t1627949059.35fa3b3"
   },
   "devDependencies": {

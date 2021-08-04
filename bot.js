@@ -29,9 +29,12 @@ client.on('messageCreate', async message => {
 		client.guilds.cache.get('477912521806839819')?.commands.set([])
 			.then(console.log)
 			.catch(console.log);
+		client.application?.commands.set([])
+			.then(console.log)
+			.catch(console.log);
 		for (const file of commandFiles) {
 			const command = require(`./commands/${file}`);
-			const slashCmd = await client.guilds.cache.get('477912521806839819')?.commands.create(command.data);
+			const slashCmd = await client.application?.commands.create(command.data);
 			console.log(slashCmd);
 		}
 	}
