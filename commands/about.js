@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const name = 'about';
 const description = 'Sends info about this bot.';
 module.exports = {
@@ -8,6 +9,9 @@ module.exports = {
 		description: description,
 	},
 	async execute(interaction) {
-		await interaction.reply('Thread Bot v1.1 by Fanman03.');
+		const messageEmbed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Thread Bot v1.1 by Fanman03');
+		interaction.reply({ embeds: [messageEmbed] });
 	},
 };

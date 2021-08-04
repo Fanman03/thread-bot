@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { MessageEmbed } = require('discord.js');
 const name = 'tcreate';
 const description = 'Creates a new thread.';
 module.exports = {
@@ -29,14 +30,27 @@ module.exports = {
 		await thread.members.add(originalMessage.author.id);
 
 		// Resend original message
-		thread.send('**Original Question:** ' + originalMessage.content);
+		const messageEmbed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle('Support request:')
+			.setAuthor(originalMessage.author.username, originalMessage.author.avatarURL())
+			.setDescription(originalMessage.content)
+			.setTimestamp(originalMessage.createdTimestamp)
+			.setFooter('Thread Bot by Fanman03', 'https://images-ext-2.discordapp.net/external/qFUpVs1VHK1zvWBc6T_bDMqNKYsO2pEXDgSAq8bb-OM/https/cdn.discordapp.com/avatars/303014314208395265/f715f04af3a3d07ef9607aae597e10fb.webp');
+		thread.send({ embeds: [messageEmbed] });
+		console.log(originalMessage);
 
 		// Add creator of thread to new thread
 		const threadCreator = interaction.user.id;
 		await thread.members.add(threadCreator);
 
 		// Add other help bot to thread
-		await thread.members.add('751229270667559003');
+		try {
+			await thread.members.add('751229270667559003');
+		}
+		catch {
+			console.log('Unable to add RGBot.');
+		}
 
 		// Reply to interaction
 		interaction.reply('Created thread ' + threadname + ' sucessfully.');

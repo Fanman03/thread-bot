@@ -37,6 +37,7 @@ client.on('messageCreate', async message => {
 			const slashCmd = await client.application?.commands.create(command.data);
 			console.log(slashCmd);
 		}
+		message.react('✅');
 	}
 });
 
